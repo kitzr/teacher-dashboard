@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Login - Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>🎓 Teacher Dashboard</h1>
+            <p class="subtitle">Teacher Login & Status Manager</p>
+            <a href="/" class="back-link">← Back to Dashboard</a>
+        </header>
+
+        <main class="main-content">
+            <!-- Login Section -->
+            <div id="login-section" class="section">
+                <div class="login-card">
+                    <h2>Teacher Login</h2>
+                    <form id="login-form">
+                        <div class="form-group">
+                            <label for="email">Email Address:</label>
+                            <input 
+                                type="email" 
+                                id="email" 
+                                name="email" 
+                                placeholder="teacher@school.com" 
+                                required
+                            >
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password:</label>
+                            <input 
+                                type="password" 
+                                id="password" 
+                                name="password" 
+                                placeholder="Enter your password" 
+                                required
+                            >
+                        </div>
+                        <div class="form-group">
+                            <label for="displayName">Display Name (optional):</label>
+                            <input 
+                                type="text" 
+                                id="displayName" 
+                                name="displayName" 
+                                placeholder="Your Name"
+                            >
+                        </div>
+                        <button type="submit" class="btn btn-primary">Login</button>
+                    </form>
+                    <p class="demo-note">
+                        <strong>Demo:</strong> Use any email/password combination to login (e.g., teacher@school.com / password123)
+                    </p>
+                    <div id="login-error" class="error-message"></div>
+                </div>
+            </div>
+
+            <!-- Dashboard Section (shown after login) -->
+            <div id="dashboard-section" class="section hidden">
+                <div class="dashboard-card">
+                    <h2>Your Status Manager</h2>
+                    <div class="teacher-info">
+                        <p><strong>Email:</strong> <span id="current-email"></span></p>
+                        <p><strong>Display Name:</strong> <span id="current-display-name"></span></p>
+                    </div>
+
+                    <!-- Display Name Update -->
+                    <div class="update-section">
+                        <h3>Update Display Name</h3>
+                        <div class="form-group">
+                            <input 
+                                type="text" 
+                                id="new-display-name" 
+                                placeholder="New display name"
+                            >
+                            <button id="update-name-btn" class="btn btn-secondary">Update Name</button>
+                        </div>
+                        <div id="name-message" class="message"></div>
+                    </div>
+
+                    <!-- Status Update -->
+                    <div class="update-section">
+                        <h3>Update Your Status</h3>
+                        <div class="status-grid">
+                            <button class="status-btn" data-status="Available">
+                                <span class="status-indicator available"></span>
+                                <span>Available</span>
+                            </button>
+                            <button class="status-btn" data-status="Absent">
+                                <span class="status-indicator absent"></span>
+                                <span>Absent</span>
+                            </button>
+                            <button class="status-btn" data-status="In Class">
+                                <span class="status-indicator in-class"></span>
+                                <span>In Class</span>
+                            </button>
+                            <button class="status-btn" data-status="In Meeting">
+                                <span class="status-indicator in-meeting"></span>
+                                <span>In Meeting</span>
+                            </button>
+                        </div>
+                        <p id="current-status" class="current-status"></p>
+                        <div id="status-message" class="message"></div>
+                    </div>
+
+                    <!-- Logout Button -->
+                    <button id="logout-btn" class="btn btn-danger">Logout</button>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>Secure teacher status management system</p>
+        </footer>
+    </div>
+
+    <script src="login.js"></script>
+</body>
+</html>

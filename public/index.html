@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Dashboard - Public Monitor</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>🎓 Teacher Dashboard</h1>
+            <p class="subtitle">Real-time Teacher Status Monitor</p>
+            <a href="/login" class="teacher-login-link">Teacher Login →</a>
+        </header>
+
+        <main class="main-content">
+            <div class="dashboard">
+                <h2>Active Teachers</h2>
+                <div id="teacher-list" class="teacher-list">
+                    <div class="loading">Connecting...</div>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>Live updates powered by WebSocket technology</p>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
